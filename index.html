@@ -23,17 +23,16 @@
 
         <div class="tasks-container">
             <ul>
-                <li class="task" v-for="(element, index) in todos">
-                    {{ element }}
+                <li class="task" v-for="todo in todos">
+                    {{ todo.text }}
                     <i class="fas fa-times" @click="removeTodo(index)"></i>
                 </li>
             </ul>
         </div>
     </div>
 
-
+    
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-
-    <script src="js/script.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
 </body>
 </html>
