@@ -4,28 +4,52 @@ createApp({
 
     data() {
 
-        return{
+        return {
+            
+            newTodo: '',
             todos: [
-                {text: 'Fare gli esercizi di Boolean',
-                done: false 
-                },
-                {                
-                text: 'Andare a calcio',
-                done: false
+                {
+                    text: 'Fare i compiti',
+                    done: false
                 },
                 {
-                text: 'Andare agli scout',
-                done: false
+                    text: 'Fare la spesa',
+                    done: true
                 },
+                {
+                    text: 'Fare il bucato',
+                    done: false
+                }
             ]
+
         };
+
     },
 
     methods: {
-        removeTodo: function (index) {
 
-            this.todos.splice(index, 1);
+        checkDone: function (todo) {
             
+            if (todo.done) {
+                return 'todo-done';
+            }
+            else {
+                return '';
+            }
+        },
+        addTodo: function () {
+            
+            this.todos.push({
+                text: this.newTodo,
+                done: false
+            });
+
+            this.newTodo = '';
+        },
+        removeTodo: function (index) {
+            this.todos.splice(index, 1);
         }
+
     }
+
 }).mount('#app');

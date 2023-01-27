@@ -17,15 +17,20 @@
         </div>
 
         <div class="new-task">
-            <input type="text" placeholder="Nuova task">
-            <button>Aggiungi</button>
+            <input type="text" @keyup.enter="addTodo()" v-model="newTodo" placeholder="Scrivi un nuovo appunto..">
+            <button @click="addTodo()">
+                Aggiungi qualcosina da fare..
+            </button>
         </div>
 
         <div class="tasks-container">
             <ul>
-                <li class="task" v-for="todo in todos">
-                    {{ todo.text }}
-                    <i class="fas fa-times" @click="removeTodo(index)"></i>
+                <li class="task" v-for="(singleTodo, i) in todos" @click="singleTodo.done = !singleTodo.done">
+                    <span :class="singleTodo.done ? 'todo-done' : ''">
+                        {{ singleTodo.text }}
+                    </span>
+
+                    <i class="fas fa-times" @click.stop="removeTodo(i)"></i>
                 </li>
             </ul>
         </div>
@@ -36,3 +41,4 @@
     <script type="text/javascript" src="js/script.js"></script>
 </body>
 </html>
+
